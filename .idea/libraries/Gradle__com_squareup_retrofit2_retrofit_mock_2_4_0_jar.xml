@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.squareup.retrofit2:retrofit-mock:2.4.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit-mock/2.4.0/289bdabb8c1ba9a26ece1ca5412fb4866ff59d8b/retrofit-mock-2.4.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit-mock/2.4.0/be84479ba77fd412124601f232f22841341cc519/retrofit-mock-2.4.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit-mock/2.4.0/ce9f1d143f76f6e21aae8d6f4da45c97eccde4cf/retrofit-mock-2.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

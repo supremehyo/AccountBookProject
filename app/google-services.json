@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "957728222651",
+    "project_id": "account-book-b2f68",
+    "storage_bucket": "account-book-b2f68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957728222651:android:327e46dd896048fa49689e",
+        "android_client_info": {
+          "package_name": "com.supremehyo.mvvmProject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957728222651-n0ifljvpubsl5cslkigj8pcop3o1ldk1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.supremehyo.mvvmProject",
+            "certificate_hash": "1456ab2a1929c7ef6aac435556e40fce42718c82"
+          }
+        },
+        {
+          "client_id": "957728222651-vbusdp7ilk70v2dkdtrepe3uc3bqh011.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3W6HCCVLOg_2UCVn0upZ4SyWd7i5S0Vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957728222651-vbusdp7ilk70v2dkdtrepe3uc3bqh011.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
