@@ -20,13 +20,22 @@ class HomeActivity : BaseKotlinActivity<ActivityMainBinding, MainViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_home
 
+    var temp_year = ""
+    var temp_month = ""
+    var temp_day = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        val today = Calendar.getInstance()
+        val year = today.get(Calendar.YEAR).toString()
+        val month = (today.get(Calendar.MONTH)+1).toString()
+        val date = today.get(Calendar.DAY_OF_MONTH).toString()
+
 
         btn1.setOnClickListener {
-            setDataAtFragment(AccountBookFragment() , this_day.text.toString())//프라그먼트에 값 넘기기
+            setDataAtFragment(AccountBookFragment() , "${year} / ${month} / ${date}")//프라그먼트에 값 넘기기
         }
 
         btn2.setOnClickListener {
@@ -34,13 +43,11 @@ class HomeActivity : BaseKotlinActivity<ActivityMainBinding, MainViewModel>() {
                 .replace(R.id.fragment_view , StatisticsFragment()).commit()
         }
 
-        val today = Calendar.getInstance()
-        val year = today.get(Calendar.YEAR).toString()
-        val month = (today.get(Calendar.MONTH)+1).toString()
-        val date = today.get(Calendar.DAY_OF_MONTH).toString()
+
 
         //현재 날짜 출력
         this_day.text = year+"년"+month+"월"+date+"일"
+        setDataAtFragment(AccountBookFragment() , "${year} / ${month} / ${date}")//프라그먼트에 값 넘기기
         //현재 날짜 클릭
         this_day.setOnClickListener {
             var calendar = Calendar.getInstance()
@@ -50,8 +57,12 @@ class HomeActivity : BaseKotlinActivity<ActivityMainBinding, MainViewModel>() {
 
             var listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
                 // i년 i2월 i3일
-                this_day.text = "${i} / ${i2 + 1} / ${i3}"
-                setDataAtFragment(AccountBookFragment() , this_day.text.toString())//프라그먼트에 값 넘기기
+                this_day.text = "${i}년 ${i2 + 1}월 ${i3}일"
+                temp_year = i.toString()
+                temp_month = (i2+1).toString()
+                temp_day = i3.toString()
+
+                setDataAtFragment(AccountBookFragment() , "${i} / ${i2 + 1} / ${i3}")//프라그먼트에 값 넘기기
             }
 
             var picker = DatePickerDialog(this, listener, year, month, day)
@@ -59,6 +70,11 @@ class HomeActivity : BaseKotlinActivity<ActivityMainBinding, MainViewModel>() {
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //setDataAtFragment(AccountBookFragment() , temp_year+" / "+ temp_month+" / "+temp_day)//프라그먼트에 값 넘기기
     }
 
     override fun initStartView() {
@@ -80,4 +96,5 @@ class HomeActivity : BaseKotlinActivity<ActivityMainBinding, MainViewModel>() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_view , fragment).commit()
     }
+
 }

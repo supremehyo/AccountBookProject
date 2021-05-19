@@ -16,6 +16,7 @@ import com.supremehyo.mvvmProject.Adapter.CustomAdapter
 import com.supremehyo.mvvmProject.Model.Service.AccountBookContacts
 import com.supremehyo.mvvmProject.R
 import com.supremehyo.mvvmProject.View.BookAddActivity
+import com.supremehyo.mvvmProject.View.EditActivity
 import com.supremehyo.mvvmProject.View.HomeActivity
 import com.supremehyo.mvvmProject.ViewModel.BookAddViewModel
 import kotlinx.android.synthetic.main.fragment_account_book.*
@@ -49,11 +50,12 @@ class DayFragment : Fragment() {
         
                 val context = container?.context
                 if (context != null) {
-                    viewModel.getBookAccount(date.toString() ,context)
+                    //원래 메인 스레드에서 동작하고 있었기 때문에 비동기로 만들어주는게 좋다.
+                    //Rxjava 혹은 코루틴 사용 할 것
+                    viewModel.getBookAccount(date.toString() ,context , "day")
                 }
                 viewModel.bookAcountLiveData.observe(this , androidx.lifecycle.Observer {
                     it.forEach{
-                        Log.v("로그dddd", it.memo.toString())//데이터 잘 나오는거 확인했음.
                         //여기에 for문 돌면서 data 를 list 로 바꿔주고 그걸 어뎁터로 넘기면 될거 같다.
                         accountbookArrayList.add(it);
                     }
@@ -61,7 +63,15 @@ class DayFragment : Fragment() {
                     var mAdapter = context?.let {
                             it1 -> CustomAdapter(it1,accountbookArrayList) {
                                 dataVo -> Toast.makeText(context, dataVo.memo.toString(), Toast.LENGTH_SHORT).show()
-                            }
+                                //클릭한 데이터를 intent 로 넘겨서 edittext에서 수정할 수 있도록 구현
+                                val myIntent = Intent(context, EditActivity::class.java)
+                                myIntent.putExtra("id",dataVo.id)
+                                myIntent.putExtra("memo",dataVo.memo)
+                                myIntent.putExtra("money",dataVo.money)
+                                myIntent.putExtra("where_pay",dataVo.where_pay)
+                                myIntent.putExtra("date",dataVo.date)
+                                startActivity(myIntent)
+                        }
                     }
                     recyclerView.adapter = mAdapter
                     val layout = LinearLayoutManager(context)

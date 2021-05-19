@@ -1,9 +1,6 @@
 package com.supremehyo.mvvmProject.Model.Service
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import io.reactivex.Single
 import java.util.*
 import kotlin.collections.ArrayList
@@ -18,6 +15,9 @@ interface AccountBookDAO {
 
     @Insert
     fun insertAll(vararg contacts: AccountBookContacts)
+
+    @Update
+    fun update(vararg contacts: AccountBookContacts)
 
     @Insert
     fun insertAccountBook(contacts: AccountBookContacts) : Long

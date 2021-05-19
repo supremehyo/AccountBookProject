@@ -5,6 +5,11 @@ import com.supremehyo.mvvmProject.DI.myDiModule
 import org.koin.android.ext.android.startKoin
 
 class MyApplication : Application() {
+
+    companion object date {
+        var date : String =""
+    }
+
     override fun onCreate() {
         super.onCreate()
         startKoin(applicationContext, myDiModule)

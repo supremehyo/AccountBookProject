@@ -83,7 +83,7 @@ class BookAddActivity : BaseKotlinActivity<ActivityMainBinding, BookAddViewModel
 
             var select_day : String = ""
             select_day = "" + cYear + " / " + (cMonth + 1) + "" + " / " + cDay
-            viewModel.getBookAccount(select_day ,this)
+            viewModel.getBookAccount(select_day ,this, "day")
 
             contextEditText.visibility = View.INVISIBLE
             textView2.visibility = View.VISIBLE

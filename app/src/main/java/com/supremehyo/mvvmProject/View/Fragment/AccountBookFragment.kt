@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.supremehyo.mvvmProject.MyApplication
 import com.supremehyo.mvvmProject.R
 import kotlinx.android.synthetic.main.fragment_account_book.*
 import kotlinx.android.synthetic.main.fragment_account_book.view.*
@@ -46,6 +47,10 @@ class AccountBookFragment : Fragment() {
         }
         //주별을 눌렀을때
         view.week.setOnClickListener {
+            var weekFragment = WeekFragment()
+            val bundle = Bundle()
+            MyApplication.date.date = date.toString()
+            weekFragment.arguments = bundle
             childFragmentManager.beginTransaction()
                 .replace(R.id.AccoutBook_fragment , WeekFragment()).commit();
         }
