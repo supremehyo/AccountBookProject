@@ -12,4 +12,5 @@ interface DataModel {
     fun addAccountBookData(dto : AccountBookContacts , context : Context)
     fun getAccountBookData (date : String , context :Context) : List<AccountBookContacts>// 날짜로 데이터 가져오는 작업
     fun editAccountBookDate(dto : AccountBookContacts , context : Context)
+    fun deleteBookAccount (long: Long , context: Context)
 }

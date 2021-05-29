@@ -22,6 +22,6 @@ interface AccountBookDAO {
     @Insert
     fun insertAccountBook(contacts: AccountBookContacts) : Long
 
-    @Delete
-    fun delete(contacts: AccountBookContacts)
+    @Query("DELETE FROM tb_addAccountContacts where id =:long ")
+    fun delete(long: Long)
 }

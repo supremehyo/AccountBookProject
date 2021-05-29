@@ -40,10 +40,9 @@ class AccountBookFragment : Fragment() {
         view.day.setOnClickListener {
             var dayFragment = DayFragment()
             val bundle = Bundle()
-            bundle.putString("date", date)
+            MyApplication.date.date = date.toString()
             dayFragment.arguments = bundle
-            childFragmentManager.beginTransaction()
-                .replace(R.id.AccoutBook_fragment , dayFragment).commit();
+            childFragmentManager.beginTransaction().replace(R.id.AccoutBook_fragment , dayFragment).commit();
         }
         //주별을 눌렀을때
         view.week.setOnClickListener {
@@ -67,5 +66,15 @@ class AccountBookFragment : Fragment() {
 
         childFragmentManager.beginTransaction()
             .replace(R.id.fragment_view , fragment).commit()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        var dayFragment = DayFragment()
+        val bundle = Bundle()
+        bundle.putString("date", date)
+        dayFragment.arguments = bundle
+        childFragmentManager.beginTransaction()
+            .replace(R.id.AccoutBook_fragment , dayFragment).commit();
     }
 }

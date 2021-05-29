@@ -39,12 +39,18 @@ class EditActivity : AppCompatActivity()   {
             }
             if (accountbookContract != null) {
                 viewModel.editBookAccount(accountbookContract,context)
+                finish()
             }
+        }
+
+        delete_bt.setOnClickListener {
+            viewModel.deleteBookAccount(context , id)
+            finish()
         }
 
 
 
 
     }
-    
+
 }

@@ -2,6 +2,7 @@ package com.supremehyo.mvvmProject.Model
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.supremehyo.mvvmProject.Model.Service.AccountBookContacts
 import com.supremehyo.mvvmProject.Model.Service.AccountBookDatabase
 import com.supremehyo.mvvmProject.View.BookAddActivity
@@ -25,9 +26,12 @@ class DataModelImpl(private val context : BookAddActivity) : DataModel{
     }
 
     override fun editAccountBookDate(dto: AccountBookContacts , context: Context) {
-        Log.v("asdfaf", dto.memo)
         var dfa =AccountBookDatabase.getInstance(context)!!.contactsDao().update(dto)
-        Log.v("asdfaf", dfa.toString())
+    }
+
+    override fun deleteBookAccount(long: Long, context: Context) {
+        var dfa = AccountBookDatabase.getInstance(context)!!.contactsDao().delete(long)
+        Toast.makeText(context, "삭제했습니다.", Toast.LENGTH_SHORT).show()
     }
 
 

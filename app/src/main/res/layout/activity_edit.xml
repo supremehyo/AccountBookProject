@@ -69,17 +69,35 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/edit_bt"
+    <LinearLayout
+        android:gravity="center"
         android:layout_below="@+id/edit_ll"
-        android:layout_margin="8dp"
-        android:text="수정"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:backgroundTint="#EC2E2E"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </Button>
+
+        <Button
+            android:id="@+id/delete_bt"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="#EC2E2E"
+            android:text="삭제"
+            android:textColor="#ffffff"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/edit_bt"
+            android:layout_margin="8dp"
+            android:text="수정"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:backgroundTint="#EC2E2E"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content">
+        </Button>
+    </LinearLayout>
+
 
 
 </RelativeLayout>

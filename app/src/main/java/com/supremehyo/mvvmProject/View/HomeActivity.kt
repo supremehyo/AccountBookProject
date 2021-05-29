@@ -1,8 +1,10 @@
 package com.supremehyo.mvvmProject.View
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Telephony
 import androidx.lifecycle.LiveData
 import com.supremehyo.mvvmProject.R
 import com.supremehyo.mvvmProject.View.Fragment.AccountBookFragment
@@ -33,14 +35,17 @@ class HomeActivity : BaseKotlinActivity<ActivityMainBinding, MainViewModel>() {
         val month = (today.get(Calendar.MONTH)+1).toString()
         val date = today.get(Calendar.DAY_OF_MONTH).toString()
 
+        val setSmsAppIntent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
+        setSmsAppIntent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, packageName)
+        startActivityForResult(setSmsAppIntent, 1)
 
         btn1.setOnClickListener {
             setDataAtFragment(AccountBookFragment() , "${year} / ${month} / ${date}")//프라그먼트에 값 넘기기
         }
 
         btn2.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_view , StatisticsFragment()).commit()
+
+            setStasticAtFragment(StatisticsFragment() , "${year} / ${month} / ${date}")//프라그먼트에 값 넘기기
         }
 
 
@@ -90,6 +95,14 @@ class HomeActivity : BaseKotlinActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     fun setDataAtFragment(fragment: AccountBookFragment , date : String){
+        val bundle = Bundle()
+        bundle.putString("date", date)
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_view , fragment).commit()
+    }
+
+    fun setStasticAtFragment(fragment: StatisticsFragment , date: String){
         val bundle = Bundle()
         bundle.putString("date", date)
         fragment.arguments = bundle

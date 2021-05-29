@@ -8,13 +8,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/addbook_top_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:id="@+id/group1"
+                android:layout_weight="1"
+                android:text="식비"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/group2"
+                android:layout_weight="1"
+                android:text="교통비"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/group3"
+                android:layout_weight="1"
+                android:text="여가생활"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/group4"
+                android:layout_weight="1"
+                android:text="의류"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/group5"
+                android:layout_weight="1"
+                android:text="생활비"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/group6"
+                android:layout_weight="1"
+                android:text="기타"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+
     <CalendarView
         android:id="@+id/calendarView"
+        android:layout_below="@+id/addbook_top_ll"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/diaryTextView"
@@ -24,69 +85,52 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/calendarView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-    <EditText
-        android:id="@+id/contextEditText"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:inputType="textMultiLine"
-        android:layout_below="@+id/diaryTextView"
-        android:hint="메모"
-        android:ems="10"
-        android:visibility="invisible"/>
 
     <EditText
         android:hint="어디에 사용하셨나요?"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:id="@+id/whereEditText"
+        android:clickable="false"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:layout_below="@+id/contextEditText"
-        android:visibility="invisible"/>
+        android:layout_below="@+id/diaryTextView" />
+
+    <EditText
+        android:id="@+id/contextEditText"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/whereEditText"
+        android:hint="메모"
+        android:ems="10" />
+
 
     <EditText
         android:id="@+id/howmuchEditText"
-        android:layout_below="@+id/whereEditText"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_below="@+id/contextEditText"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:hint="얼마나 쓰셨나요?"
-        android:visibility="invisible"/>
+        android:hint="얼마나 쓰셨나요?" />
     <Button
         android:text="저장"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#EC2E2E"
+        android:textColor="#ffffff"
         android:id="@+id/save_Btn"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:layout_below="@+id/howmuchEditText"
         android:layout_marginTop="16dp"
         />
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/contextEditText"
-        app:layout_constraintBottom_toBottomOf="@+id/contextEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintStart_toStartOf="@+id/contextEditText" android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp" android:visibility="invisible"/>
-    <Button
-        android:text="수정"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cha_Btn"
-        android:layout_below="@+id/howmuchEditText"
-        android:visibility="invisible"/>
-    <Button
-        android:text="삭제"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/del_Btn"
-        android:layout_below="@+id/howmuchEditText"
-        android:layout_toRightOf="@+id/cha_Btn"
-        android:visibility="invisible">
-    </Button>
 </RelativeLayout>
 </layout>

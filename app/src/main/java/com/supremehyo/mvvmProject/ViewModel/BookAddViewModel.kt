@@ -5,19 +5,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.supremehyo.mvvmProject.Model.DataModel
-import com.supremehyo.mvvmProject.Model.DataModelImpl
 import com.supremehyo.mvvmProject.Model.Service.AccountBookContacts
-import com.supremehyo.mvvmProject.Model.Service.AccountBookDTO
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import java.util.*
-import kotlin.collections.ArrayList
 
 class BookAddViewModel(private val model: DataModel) : BaseKotlinViewModel() {
 
     private val TAG = "MainViewModel"
-    var bookaccountlist : List<AccountBookContacts> = listOf()
+    var bookaccountlist : ArrayList<AccountBookContacts> = ArrayList<AccountBookContacts>()
 
     private  val _bookAcountLiveData = MutableLiveData<List<AccountBookContacts>>()
     val bookAcountLiveData: LiveData<List<AccountBookContacts>>
@@ -40,7 +33,6 @@ class BookAddViewModel(private val model: DataModel) : BaseKotlinViewModel() {
 
     //가계부 정보 가져오기
     fun getBookAccount(date: String, context: Context, flag : String){
-
         if(flag.equals("day")){
             var datalist : List<AccountBookContacts>? = model.getAccountBookData(date,context)
             if (datalist != null && datalist.size !=0) {
@@ -68,27 +60,21 @@ class BookAddViewModel(private val model: DataModel) : BaseKotlinViewModel() {
     }
 
     fun getWeekBookAccount( context: Context , datlist : ArrayList<String>){
-
-
         for (index in datlist.indices) { //
             var temp_bookaccountlist : List<AccountBookContacts> =  model.getAccountBookData(datlist.get(index),context)
             for (index in temp_bookaccountlist.indices) { //
-                Log.v("asdfagag", temp_bookaccountlist.get(index).memo)
+                bookaccountlist.add(temp_bookaccountlist.get(index))
             }
-                bookaccountlist.plus(temp_bookaccountlist) // plus 할때는 선언할때 ? 불가능. 형식을 명시해줘야함
-            //이 plus 가 잘 안되서 안되는중 이거만 되면 잘될듯
+             //이 plus 가 잘 안되서 안되는중 이거만 되면 잘될듯
         }
-
-
-
         _week_bookAcountLiveData.postValue(bookaccountlist)
     }
 
 
 
     //가계부 정보 지우기
-    fun deleteBookAccount(date : String){
-
+    fun deleteBookAccount(context: Context , long : Long){
+        model.deleteBookAccount(long ,context)
     }
 
 

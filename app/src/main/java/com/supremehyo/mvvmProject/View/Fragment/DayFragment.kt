@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.supremehyo.mvvmProject.Adapter.CustomAdapter
 import com.supremehyo.mvvmProject.Model.Service.AccountBookContacts
+import com.supremehyo.mvvmProject.MyApplication
 import com.supremehyo.mvvmProject.R
 import com.supremehyo.mvvmProject.View.BookAddActivity
 import com.supremehyo.mvvmProject.View.EditActivity
@@ -40,6 +41,7 @@ class DayFragment : Fragment() {
         arguments?.let {
             date = it.getString("date")
         }
+        date = MyApplication.date.date
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): 

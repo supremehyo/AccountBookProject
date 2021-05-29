@@ -74,6 +74,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.3.2'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
 
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0' //차트 라이브러리
 
     def room_version = "2.2.5"
     kapt "androidx.room:room-compiler:$room_version"
